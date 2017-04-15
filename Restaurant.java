@@ -1,4 +1,4 @@
-package skeleton;
+package skeleton1;
 /**
  *
  * @author Seth
@@ -35,12 +35,17 @@ public class Restaurant {
         return foodWaste;
     }
     
-    public String getFullInfo(){
+    public String getInfo(){
         String fullInfo;
         fullInfo = "Restaurant Name: " + name + ", Address: " + address 
                 + ", Food Type: " + foodType + ", Wasted Food: " + foodWaste + "lbs";
         return fullInfo;
     }
     
-    
+    public String printInfo(){
+        String printInfo;
+        printInfo = "Restaurant: " + name + "\nAddress: " + address 
+                + "\nFood Type: " + foodType + "\nWasted Food: **" + foodWaste + "** lbs";
+        return printInfo;
+    }
 }
