@@ -1,4 +1,4 @@
-package skeleton;
+package skeleton1;
 /** April 13th, 2017
  * Data Structures Project - rough draft
  * Prof. Nizich
@@ -26,18 +26,13 @@ public class Skeleton1 {
         for (int i=0; i < myArray.length; i++){ //arrays use array.length for 'size'
         System.out.println(myArray[i] + " "); //array[index] to access array elements
         }
-        
-        // Arraylist - this isn't on requirements, but we can use it if we want
-        ArrayList obj = new ArrayList();
-        obj.add("Holder 1");
-        obj.add("Holder 2");
-        System.out.println("ArrayList: " + obj);
-        
+
         ArrayList<Integer> vals = new ArrayList<>();
         vals.add(10);
         vals.add(15);
         vals.add(20);
         vals.add(25);
+        vals.add(30);
         System.out.println("Vals: " + vals);
         int sum = 0;
         for (int i = 0; i < vals.size(); i++){ //arrayList use obj.size() for 'length'
@@ -52,6 +47,7 @@ public class Skeleton1 {
         myLinkedList.add("Location 2");
         myLinkedList.add("Location 3");
         System.out.println("myLinkedList: " + myLinkedList);
+        System.out.println("First element: " + myLinkedList.getFirst());
         
         // Stack
         Stack myStack = new Stack();
@@ -84,10 +80,22 @@ public class Skeleton1 {
         //binary search
         //bubble sort
        
-        Restaurant Pizza = new Restaurant("Pizza", "20 Any Street", "Italian", 50);
-        System.out.println (Pizza.getFullInfo());
+        //use restaurant class to create classes
+        // new Restaurant(String name, String Address, String foodtype, Integer FoodWaste)
+        Restaurant Pizza = new Restaurant("Pizza", "20 Any Street", "Italian", 100);
+        Restaurant FastFood = new Restaurant("Fast Food", "10 Noman Street", "Fast Food", 150);
 
+        System.out.println (Pizza.getInfo());
+        System.out.println(FastFood.getInfo());
         
+        System.out.println(FastFood.printInfo());
+        
+        int length = myQ.size();
+        
+        for (int j = 0; j < length; j++ ){
+            System.out.println("** " + myQ.poll() + " **");
+            System.out.println("     " + vals.get(j) + "  lbs");
+            
+        }  
     }
-    
 }
