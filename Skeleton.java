@@ -1,12 +1,13 @@
 package skeleton1;
-/** April 13th, 2017
- * Data Structures Project - rough draft
+/** April 15th, 2017
+ * Data Structures Project - rough draft 2
  * Prof. Nizich
- * Inclusion of Data Structures through Queues
- *
+ * 
+ * 
  * @Team
  * Seth Levine, Peter Flyntz, Anthony LoSchiavo
  * 
+ * Author: Seth Levine 
  */
 
 import java.util.*;
@@ -99,3 +100,5 @@ public class Skeleton1 {
         }  
     }
 }
+
+
