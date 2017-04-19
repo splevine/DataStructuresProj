@@ -1,0 +1,46 @@
+/* April 18th, 2017
+ * Data Structures Project - Draft 
+ * Prof. Nizich
+ *
+ * Team: Seth Levine, Peter Flyntz, Anthony LoSchiavo
+ *
+ * Draft author: Seth
+ */
+
+package datastructuresproj;
+
+import java.util.*;
+
+
+public class DataStructuresProj {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+
+        Restaurant Pizza = new Restaurant("Pizza Place", "20 Any Street", "Italian");
+        //inputWaste() method is in Restaurant class - creates an array of the amount of food wasted each weekday
+        Pizza.inputWaste();   
+        
+        Restaurant FastFood = new Restaurant("Fast Food", "10 Noman Street", "Fast Food");
+        FastFood.inputWaste();
+
+        // Queue
+        Queue<String> myQ = new LinkedList<String>();
+        myQ.add("Monday");
+        myQ.add("Tuesday");
+        myQ.add("Wednesday");
+        myQ.add("Thursday");
+        myQ.add("Friday");
+        System.out.println("myQ: " + myQ);
+
+        // Current Output
+        for (int j = 0; j < 5; j++ ){
+            System.out.println("** " + myQ.poll() + " **");
+            System.out.println(Pizza.getName() + ": " + Pizza.waste[j] + " lbs" );
+            System.out.println(FastFood.getName() + ": " + FastFood.waste[j] + " lbs" );
+            
+        }   
+        
+    }
+}
