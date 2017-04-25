@@ -1,4 +1,4 @@
-/* April 18th, 2017
+/* April 25th, 2017
  * Data Structures Project - Draft 
  * Prof. Nizich
  *
@@ -11,22 +11,33 @@ package datastructuresproj;
 
 import java.util.*;
 
-
 public class DataStructuresProj {
+    
+    /* Enter in the average amount of food wasted at each restaurant for each day of the week
+    * Output which day of the week is the best to pick up food and the top restaurants to pick up from
+    */
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
+        //Constructor for Restaurant(String name, String address, Double distance, String manager){
 
-        Restaurant Pizza = new Restaurant("Pizza Place", "20 Any Street", "Italian");
+        Restaurant App = new Restaurant("App-itizer", "6 Engineers Rd, Roslyn, NY 11576", 2.4, "John Alonzo");
+        Restaurant Franks = new Restaurant("Frank's Pizza & Pasta", "2 Whippet Ln, East Norwich, NY 11732", 6.9, "Cody Binks");
+        Restaurant Pasta = new Restaurant("Pastafrian Extravaganza", "8 Feeks Ln, Locust Valley, NY 11560", 6.8, "Shani J. Jackson III");
+        Restaurant Mex = new Restaurant ("The Whole Enchilada", "35 Greenmeadow Ln, Huntington, NY 11743", 5.6, "Gabriel Rayes");
+        Restaurant Buffet = new Restaurant ("The Grand Buffet", "90 Crestwood Blvd, Farmingdale, NY 11735", 8.1, "James Chong");
+
         //inputWaste() method is in Restaurant class - creates an array of the amount of food wasted each weekday
-        Pizza.inputWaste();   
+        App.inputWaste();
+        System.out.println("*******");
+        Franks.inputWaste();
+        //Pasta.inputWaste();
+        //Mex.inputWaste();
+        //Buffet.inputWaste();
         
-        Restaurant FastFood = new Restaurant("Fast Food", "10 Noman Street", "Fast Food");
-        FastFood.inputWaste();
-
         // Queue
-        Queue<String> myQ = new LinkedList<String>();
+        Queue<String> myQ = new LinkedList<>();
         myQ.add("Monday");
         myQ.add("Tuesday");
         myQ.add("Wednesday");
@@ -37,10 +48,14 @@ public class DataStructuresProj {
         // Current Output
         for (int j = 0; j < 5; j++ ){
             System.out.println("** " + myQ.poll() + " **");
-            System.out.println(Pizza.getName() + ": " + Pizza.waste[j] + " lbs" );
-            System.out.println(FastFood.getName() + ": " + FastFood.waste[j] + " lbs" );
+            System.out.println(App.getName() + ": " + App.waste[j] + " lbs" );
+            System.out.println(Franks.getName() + ": " + Franks.waste[j] + " lbs" );
             
         }   
+        
+        System.out.println(App.printFullInfo());
+        System.out.println(Franks.printFullInfo());
+
         
     }
 }
