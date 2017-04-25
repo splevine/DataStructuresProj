@@ -1,0 +1,46 @@
+package datastructuresproj;
+
+/**
+ *
+ * @author Seth
+ */
+public class TestDataStructuresProj {
+
+    public static void main(String[] args) {
+        Restaurant R1 = new Restaurant("Test1");
+        //waste[0] = Monday, waste[1] = Tuesday...    
+        R1.waste[0] = 5;
+        R1.waste[1] = 6;
+        R1.waste[2] = 5;
+        R1.waste[3] = 6;
+        R1.waste[4] = 5;
+        
+        Restaurant R2 = new Restaurant ("R2");
+        R2.waste[0] = 10;
+        R2.waste[1] = 9;
+        R2.waste[2] = 8;
+        R2.waste[3] = 7;
+        R2.waste[4] = 6;
+        
+        Restaurant R3 = new Restaurant ("R3");
+        R3.waste[0] = 20;
+        R3.waste[1] = 30;
+        R3.waste[2] = 40;
+        R3.waste[3] = 50;
+        R3.waste[4] = 40;
+
+        //find day with most waste
+        int max = R1.waste[0] + R2.waste[0] + R3.waste[0];
+        int val;
+        int index = 0;
+        for (int i=0; i <5; i++) {
+            val = R1.waste[i] + R2.waste[i] + R3.waste[i];
+            if (val > max) {
+                index = i;
+                max = val;
+            }
+        }
+        System.out.println("Day of the week: " + index);  
+        System.out.println("Food Wasted: " + max + " lbs");                                        
+    }           
+}
