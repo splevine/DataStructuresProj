@@ -1,4 +1,3 @@
-
 package datastructuresproj;
 
 import java.util.Scanner;
@@ -13,6 +12,9 @@ public class Restaurant {
     private String name;
     private String address;
     private String foodType;
+    String manager;
+    
+    double distance;
     private int foodWaste;
     private int MonWaste;
     private int TuesWaste;
@@ -23,6 +25,13 @@ public class Restaurant {
     
     public Restaurant(String name){
         this.name = name;
+    }
+    
+    public Restaurant(String name, String address, Double distance, String manager){
+        this.name = name;
+        this.address = address;
+        this.distance = distance;
+        this.manager = manager;
     }
     
     public Restaurant(String name, String address, String foodType){
@@ -61,6 +70,13 @@ public class Restaurant {
         return printInfo;
     }
     
+    public String printFullInfo(){
+        String printFullInfo;
+        printFullInfo = "Restaurant: " + name + "\nAddress: " + address 
+                + "\nDistance: " + distance + "\nContact: " + manager +"\n";
+        return printFullInfo;
+    }
+    
     public int[] createArray() {
         int[] waste = new int[5];
         waste[0] = MonWaste; 
@@ -75,23 +91,23 @@ public class Restaurant {
     System.out.println("Please Enter the amount of food wasted each day at " + this.getName());
         for (int i = 0; i < 5; i++){
             if (i==0) {
-                System.out.println("Monday Waste: ");
+                System.out.print("Monday Waste: ");
             }
             if (i==1) {
-                System.out.println("Tuesday Waste: ");
+                System.out.print("Tuesday Waste: ");
             }
             if (i==2) {
-                System.out.println("Wednesday Waste: ");
+                System.out.print("Wednesday Waste: ");
             }
             if (i==3) {
-                System.out.println("Thursday Waste: ");
+                System.out.print("Thursday Waste: ");
             }       
             if (i==4) {
-                System.out.println("Friday Waste: ");
+                System.out.print("Friday Waste: ");
             }                   
             this.waste[i] = sc.nextInt();
+           
         }
     }
     
 }
-
