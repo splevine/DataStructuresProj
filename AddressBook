@@ -8,7 +8,7 @@ import javax.swing.event.*;
 import java.util.*;
  
 class AddressBook implements ActionListener
-    {
+    { 
           JPanel topPanel,bottomPanel;
           JScrollPane scrollPane;
           JFrame frame;
@@ -22,26 +22,32 @@ class AddressBook implements ActionListener
           int screenHeight = screenSize.height;
           int screenWidth = screenSize.width;
  
-          // edit image
           Image img = kit.getImage("images/icon.JPG");
  
           AddressBook()
             {
+ 
                     frame = new JFrame("Address Book");
-                    //change congtainer size
-                    frame.setSize(800,600); 
+                    frame.setSize(680,200);
+                     
+
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
                     frame.setLocation(screenWidth/4, screenHeight/4);
                     frame.setIconImage(img);
                     addWidgets();
                     frame.show();
+ 
             }
-          
+ 
+ 
+ 
          public void addWidgets()
+ 
             {
                     menubar.add(menu);
+ 
                     menu = new JMenu("Options");
-                   
                     menuItem = new JMenuItem("Add New Contact");
                     menu.add(menuItem);
                     menuItem.addActionListener(this);
@@ -66,8 +72,11 @@ class AddressBook implements ActionListener
                     menu.add(menuItem);
                     menuItem.addActionListener(this);
  
+ 
                     menubar.add(menu);
+ 
                     menu = new JMenu("Help");
+ 
                     menuItem = new JMenuItem("Help Contents");
                     menu.add(menuItem);
                     menuItem.addActionListener(this);
@@ -77,7 +86,9 @@ class AddressBook implements ActionListener
                     menuItem.addActionListener(this);
  
                     menubar.add(menu);
+ 
                     frame.setJMenuBar(menubar);
+ 
  
                     JPanel topPanel = new JPanel();
                     JPanel bottomPanel = new JPanel();
@@ -105,19 +116,19 @@ class AddressBook implements ActionListener
                     bottomPanel.add(SortContacts);
                     bottomPanel.add(ViewContactList);
  
-                    frame.getContentPane().add(topPanel,BorderLayout.NORTH);
+                    frame.getContentPane().add(topPanel, BorderLayout.NORTH);
                     frame.getContentPane().add(bottomPanel,BorderLayout.SOUTH);
                     frame.setResizable(false);
             }
-  
+ 
+ 
          public static void main(String args[])
             {
                 AddressBook add = new AddressBook();
             }
- 
-         OperationHandler oh = new OperationHandler();
- 
-         public void actionPerformed(ActionEvent ae)
+        OperationHandler oh = new OperationHandler();
+        
+        public void actionPerformed(ActionEvent ae)
             {
                 if(ae.getActionCommand() == "Add New Contact")
                     {
@@ -126,33 +137,33 @@ class AddressBook implements ActionListener
  
                 else  if(ae.getActionCommand() == "Search Contacts")
                     {
-                         oh.SearchContacts();
+                         oh.SearchContacts(); 
                     }
  
                 else  if(ae.getActionCommand() == "Sort Contacts")
                     {
-                         oh.SortContacts(); 
+                         oh.SortContacts();
                     }
  
                 else  if(ae.getActionCommand() == "Delete Contact")
                     {
-                          oh.DeleteContact(); 
+                          oh.DeleteContact();
                     }
  
                 else  if(ae.getActionCommand() == "View All Contacts")
-                    {
-                          oh.ViewAllContacts();
+                    { 
+                          oh.ViewAllContacts(); 
                     }
  
                 else  if(ae.getActionCommand() == "About")
                     {
-                          JOptionPane.showMessageDialog(frame, "About Address Book:"
+                          JOptionPane.showMessageDialog(frame, "About Address Book: "
                                   + "Created By Rahul Chouhan"
-                                  + "Computer Engg, IET-DAVV, Indore."
-                                  + "Website: http "," Address Book",
-                                  JOptionPane.INFORMATION_MESSAGE);
+                                  + "Computer Engg, IET-DAVV, Indore. "
+                                  + "Website: http "," Address Book", JOptionPane.INFORMATION_MESSAGE); 
                     }
-                else if(ae.getActionCommand() == "Help Contents")
+                
+                else  if(ae.getActionCommand() == "Help Contents")
                     {
                         try
                          {
@@ -163,16 +174,15 @@ class AddressBook implements ActionListener
                          }
  
                     }
-                else if(ae.getActionCommand() == "Backup Contacts")
+                 else  if(ae.getActionCommand() == "Backup Contacts")
                     {
                         JFileChooser chooser = new JFileChooser();
                         chooser.setCurrentDirectory(new File("."));
-                        chooser.setMultiSelectionEnabled(false);                       
+                        chooser.setMultiSelectionEnabled(false);
+ 
                         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                         chooser.showSaveDialog(frame);
-                        FileOutputStream bfout;
-                        bfout = null;
-                        
+                        FileOutputStream  bfout = null;
                         FileInputStream bfin = null;
                         String filename=null;
  
@@ -188,7 +198,7 @@ class AddressBook implements ActionListener
  
                         try
                            {
-                              bfout = new FileOutputStream(filename + "\\data.dat");
+                              bfout = new FileOutputStream(filename + "\data.dat");
                            }
                         catch(Exception e)
                            {
@@ -212,18 +222,12 @@ class AddressBook implements ActionListener
                                  }while(p!=-1);
                             }
                          catch(Exception e)
-                            {
- 
-                            }
- 
- 
-                    }
- 
-            }
- 
- 
+                            { 
+                            } 
+                    } 
+            } 
     }
- 
+  
 class Contact implements Serializable
     {
          private String FName;
@@ -235,8 +239,8 @@ class Contact implements Serializable
          private String Webpage;
          private String Bday;
  
-         public void setDetails(String fname, String lname, String nname, String email, 
-                 String address, String phone, String web, String bday)
+         public void setDetails(String fname, String lname, String nname,
+                 String email, String address, String phone, String web, String bday)
              {
                   FName = fname;
                   LName = lname;
@@ -246,8 +250,7 @@ class Contact implements Serializable
                   PhoneNo = phone;
                   Webpage = web;
                   Bday = bday;
-             }
- 
+             } 
  
          public String getFName()
              {
@@ -287,10 +290,8 @@ class Contact implements Serializable
           public String getBday()
              {
                   return Bday;
-             }
+             } 
     }
- 
- 
 
 class OperationHandler implements ListSelectionListener, 
 ActionListener,
@@ -333,13 +334,14 @@ Runnable
  
        JTextField txtSearch;
  
-       String columnNames[] = { "First Name", "Last Name","Nickname","E Mail Address","Address","Phone No.","Webpage","B'day"};
+       String columnNames[] = { "First Name", "Last Name", "Nickname","E Mail Address",
+                                                  "Address", "Phone No.", "Webpage", "Bday" };
  
+       // set original dimensions
        Object data[][]= new Object[5][8];
  
        OperationHandler()
-           {
- 
+           { 
                 try {
                        fis = new FileInputStream("data/data.dat");
                        ois = new ObjectInputStream(fis);
@@ -348,11 +350,11 @@ Runnable
                     }
  
                catch(Exception e)
-                    {
-                    }
-           }
-       
-        public void run()
+                    { 
+                    } 
+           } 
+ 
+       public void run()
            {
  
                try
@@ -362,12 +364,13 @@ Runnable
                      oos.writeObject(v);
                      oos.flush();
                      oos.close();
- 
                 }
+               
                catch(Exception e)
-                {
+               
+               {
                       JOptionPane.showMessageDialog(newFrame, "Error Opening Data File: Could Not Save Contents.", 
-                              "Error Opening Data File",JOptionPane.INFORMATION_MESSAGE);
+                              "Error Opening Data File", JOptionPane.INFORMATION_MESSAGE);
                 }
  
            }
@@ -400,14 +403,13 @@ Runnable
                txtWebpage = new JTextField(10);
                txtBDay = new JTextField(10);
  
-               JButton BttnAdd = new JButton("Add New");
-               BttnSaveAdded = new JButton("Save");
+               JButton BttnAdd = new JButton("Add New!");
+               BttnSaveAdded = new JButton("Save Added!");
  
                BttnAdd.addActionListener(this);
                BttnSaveAdded.addActionListener(this);
                BttnSaveAdded.setEnabled(false);
- 
- 
+  
                JPanel centerPane = new JPanel();
                JPanel bottomPane = new JPanel();
  
@@ -430,7 +432,7 @@ Runnable
                bottomPane.add(BttnAdd);
                bottomPane.add(BttnSaveAdded);
  
-               centerPane.setLayout(new GridLayout(0,2));
+               centerPane.setLayout(new GridLayout(0,2)); 
  
                newFrame.getContentPane().add(centerPane,BorderLayout.CENTER);
                newFrame.getContentPane().add(bottomPane,BorderLayout.SOUTH);
@@ -443,7 +445,7 @@ Runnable
        public void SearchContacts()
            {
                newFrame = new JFrame("Search Contacts");
-               newFrame.setSize(750,450);
+               newFrame.setSize(700,220);
                newFrame.setLocation(screenWidth/4, screenHeight/4);
                newFrame.setIconImage(img);
                newFrame.setResizable(false);
@@ -471,7 +473,7 @@ Runnable
                newFrame.getContentPane().add(scrollPane,BorderLayout.SOUTH);
  
                newFrame.getContentPane().add(topPane, BorderLayout.NORTH);
-               newFrame.getContentPane().add(centerPane,BorderLayout.CENTER);
+               newFrame.getContentPane().add(centerPane, BorderLayout.CENTER);
                newFrame.show();
            }
  
@@ -513,8 +515,7 @@ Runnable
  
                newFrame.getContentPane().add(topPane, BorderLayout.NORTH);
                newFrame.getContentPane().add(pane, BorderLayout.CENTER);
-               newFrame.getContentPane().add(bottomPane,BorderLayout.SOUTH);
- 
+               newFrame.getContentPane().add(bottomPane, BorderLayout.SOUTH);
                newFrame.show();
  
            }
@@ -535,16 +536,15 @@ Runnable
  
                for(int l=0;l<v.size();l++)
                      {
-                        contact = (Contact) v.elementAt(l);
- 
+                        contact = (Contact) v.elementAt(l); 
                         fname = contact.getFName();
                         lname = contact.getLName();
-                        listModel.addElement(fname + " " + lname);
- 
+                        listModel.addElement(fname + " " + lname); 
                      }
  
  
                list = new JList(listModel);              
+
                list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                listSelectionModel = list.getSelectionModel();
                listSelectionModel.addListSelectionListener(this);
@@ -566,35 +566,28 @@ Runnable
                bttnCancel.addActionListener(this);
  
                newFrame.getContentPane().add(topPane, BorderLayout.NORTH);
-               newFrame.getContentPane().add(listScrollPane,BorderLayout.CENTER);
-               newFrame.getContentPane().add(bottomPane,BorderLayout.SOUTH);
+               newFrame.getContentPane().add(listScrollPane, BorderLayout.CENTER);
+               newFrame.getContentPane().add(bottomPane, BorderLayout.SOUTH);
  
                newFrame.show();
- 
            }
  
  
        public void ViewAllContacts()
            {
+               newFrame = new JFrame("All Contacts In The Address Book");               
+               newFrame.setSize(600,300);               
+               newFrame.setIconImage(img);            
+               Contact con = new Contact();
  
-                    newFrame = new JFrame("All Contacts In The Address Book");
-                    newFrame.setSize(600,300);
-                    newFrame.setIconImage(img);
- 
-                    Contact con = new Contact();
-                    String columnNames[] = { "First Name",
-                                          "Last Name",
-                                          "Nickname",
-                                          "E Mail Address",
-                                          "Address",
-                                          "Phone No.",
-                                          "Webpage",
-                                          "B'day"
-                                         };
-                    Object data[][]= new Object[v.size()][8];
-                    for(int j=0;j<v.size();j++)
-                            {
-                                 con = (Contact) v.elementAt(k);
+                    
+               String columnNames[] = { "First Name", "Last Name", "Nickname", "E Mail Address",
+                                          "Address", "Phone No.", "Webpage", "Bday"};
+               
+               Object data[][]= new Object[v.size()][8];
+                     for(int j=0;j<v.size();j++)
+                            { 
+                                con = (Contact) v.elementAt(k); 
                                  data[j][0] = con.getFName();
                                  data[j][1] = con.getLName();
                                  data[j][2] = con.getNname();
@@ -602,8 +595,8 @@ Runnable
                                  data[j][4] = con.getAddress();
                                  data[j][5] = con.getPhoneNo();
                                  data[j][6] = con.getWebpage();
-                                 data[j][7] = con.getBday();
-                                 k++;
+                                 data[j][7] = con.getBday(); 
+                                 k++; 
                             }
                      k=0;
  
@@ -614,11 +607,10 @@ Runnable
                      JPanel pane = new JPanel();
                      JLabel label = new JLabel("Contacts Currently In The Address Book");
                      pane.add(label);
- 
                      newFrame.getContentPane().add(pane,BorderLayout.SOUTH);
-                     newFrame.getContentPane().add(scrollPane,BorderLayout.CENTER);
+                     newFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
                      newFrame.setLocation(screenWidth/4, screenHeight/4);
-                     newFrame.show();
+                     newFrame.show(); 
            }
  
        public void showHelp() throws IOException
@@ -644,8 +636,7 @@ Runnable
                   }
                 catch(Exception e)
                   {
-                      JOptionPane.showMessageDialog(newFrame, "Help File Not Found.", "Help File Not Found", 
-                              JOptionPane.INFORMATION_MESSAGE);
+                      JOptionPane.showMessageDialog(newFrame, "Help File Not Found.", "Help File Not Found", JOptionPane.INFORMATION_MESSAGE);
                   }
  
                 do
@@ -668,26 +659,28 @@ Runnable
                 JLabel label = new JLabel(title);
                 topPane.add(label);
  
-                JScrollPane scrollPane = new JScrollPane(textArea);
-                
+                JScrollPane scrollPane = new JScrollPane(textArea);                 
+
                 newFrame.getContentPane().add(topPane,BorderLayout.NORTH);
                 newFrame.getContentPane().add(scrollPane);
-                newFrame.getContentPane().add(bottomPane,BorderLayout.SOUTH);
-                newFrame.show();
-  
+                newFrame.getContentPane().add(bottomPane,BorderLayout.SOUTH); 
+                newFrame.show(); 
            }
-       
+ 
+ 
        public void actionPerformed(ActionEvent ae)
-           {
+           { 
               if(ae.getActionCommand() == "Add New!")
                    {
-                if(txtFirstName.getText().equals("") && txtLastName.getText().equals("") && 
-                        txtNickname.getText().equals("") &&
-                        txtEMail.getText().equals("") && txtAddress.getText().equals("") &&                
-                        txtPhoneNo.getText().equals("") && txtWebpage.getText().equals("") &&
-                        txtBDay.getText().equals(""))
-                            {                              
-                                JOptionPane.showMessageDialog(newFrame,"Entries Empty! Fill in the required entries to save Contact.", 
+ 
+                        if(txtFirstName.getText().equals("") && txtLastName.getText().equals("") && 
+                                txtNickname.getText().equals("") && txtEMail.getText().equals("") && 
+                                txtAddress.getText().equals("") && txtPhoneNo.getText().equals("") && 
+                                txtWebpage.getText().equals("") && txtBDay.getText().equals(""))
+                            {
+                                  
+
+                                JOptionPane.showMessageDialog(newFrame, "Entries Empty! Fill in the required entries to save Contact.", 
                                         "Entries Empty", JOptionPane.INFORMATION_MESSAGE);
  
                               }
@@ -695,7 +688,11 @@ Runnable
                         else
                            {
                                Contact contact = new Contact();
-                               contact.setDetails(txtFirstName.getText(),txtLastName.getText(),txtNickname.getText(),txtEMail.getText(),txtAddress.getText(),txtPhoneNo.getText(),txtWebpage.getText(),txtBDay.getText());
+ 
+
+                               contact.setDetails(txtFirstName.getText(),txtLastName.getText(),
+                                       txtNickname.getText(),txtEMail.getText(),txtAddress.getText(),
+                                       txtPhoneNo.getText(),txtWebpage.getText(),txtBDay.getText());
                                v.addElement(contact);
                                txtFirstName.setText("");
                                txtLastName.setText("");
@@ -708,26 +705,20 @@ Runnable
  
                                if(BttnSaveAdded.isEnabled() == false)
                                     BttnSaveAdded.setEnabled(true);
-                          }
- 
- 
- 
+                          } 
                    }
-               
-              else if(ae.getActionCommand() == "Save Added!")
+              
+               else if(ae.getActionCommand() == "Save Added!")
                    { 
                      saveVector();
                      newFrame.setVisible(false); 
                    }
-              
                 else if(ae.getActionCommand() == "Ok")
                    {
-                        newFrame.setVisible(false);
- 
+                        newFrame.setVisible(false); 
                    }
                 else if(ae.getActionCommand() == "Delete Selected")
-                   {
- 
+                   { 
                         int index;
                         try
                           {
@@ -737,6 +728,7 @@ Runnable
                              if(index==-1)
                                {
  
+
                                    JOptionPane.showMessageDialog(newFrame, "Select a Contact first to delete it.", 
                                            "Select a Contact First", JOptionPane.INFORMATION_MESSAGE);
                                }
@@ -744,7 +736,8 @@ Runnable
                              else
                               {
  
-                                    int n = JOptionPane.showConfirmDialog(newFrame, "Are you sure you want to delete the selected Contact?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+                                    int n = JOptionPane.showConfirmDialog(newFrame, "Are you sure you want to delete the selected Contact?", 
+                                            "Are you sure?", JOptionPane.YES_NO_OPTION);
  
  
                                     if (n == JOptionPane.YES_OPTION)
@@ -752,10 +745,9 @@ Runnable
                                              listModel.remove(index);
                                              v.removeElementAt(index);
                                              saveVector();
-                                             newFrame.show();
- 
- 
+                                             newFrame.show(); 
                                         }
+                                    
                                      else if (n == JOptionPane.NO_OPTION)
                                         {
  
@@ -799,9 +791,12 @@ Runnable
                             {
  
                                  con = (Contact) v.elementAt(t);
-                                 if(SearchStr.equalsIgnoreCase(con.getFName()) ||
+ 
+ 
 
-                                         SearchStr.equalsIgnoreCase(con.getLName()) || SearchStr.equalsIgnoreCase(con.getFName() + " " + con.getLName()))
+                                 if(SearchStr.equalsIgnoreCase(con.getFName()) || 
+                                         SearchStr.equalsIgnoreCase(con.getLName()) ||
+                                         SearchStr.equalsIgnoreCase(con.getFName() + " " + con.getLName()))
                                     {
                                         flag=true;
  
@@ -813,7 +808,10 @@ Runnable
                                         data[c][5] = con.getPhoneNo();
                                         data[c][6] = con.getWebpage();
                                         data[c][7] = con.getBday();
-                                        searchTable = new JTable(data,columnNames);
+                                        searchTable = new
+
+        
+                                        JTable(data,columnNames);
                                         newFrame.setSize(700,221);
                                         newFrame.setSize(700,220);
  
@@ -826,12 +824,14 @@ Runnable
  
                          if(flag)
                             {
-                               JOptionPane.showMessageDialog(newFrame, "Contact Found!", "Search Result!", JOptionPane.INFORMATION_MESSAGE);
+                               JOptionPane.showMessageDialog(newFrame, "Contact Found!", 
+                                       "Search Result!", JOptionPane.INFORMATION_MESSAGE);
                             }
  
                          else
                             {
-                               JOptionPane.showMessageDialog(newFrame, "No Such Contact Found!", "Search Result!", JOptionPane.INFORMATION_MESSAGE);
+                               JOptionPane.showMessageDialog(newFrame, "No Such Contact Found!", 
+                                       "Search Result!",JOptionPane.INFORMATION_MESSAGE);
                             }
  
  
@@ -858,7 +858,8 @@ Runnable
                                     if(contact1.getFName().compareTo(contact2.getFName()) > 0)
                                         {
                                            temp = (Contact) 
-                                                   v.elementAt(m);
+                                                   v.elementAt(m);                                          
+
                                            v.setElementAt(v.elementAt(l),m);
                                            v.setElementAt(temp,l);
                                         }
@@ -882,40 +883,31 @@ Runnable
                                  {
                                     contact1 = (Contact) v.elementAt(l);
                                     contact2 = (Contact) v.elementAt(m);
+ 
                                     if(contact1.getLName().compareTo(contact2.getLName()) > 0)
                                         {
                                            temp = (Contact) 
                                                    v.elementAt(m);
-                                            
                                            v.setElementAt(v.elementAt(l),m);
                                            v.setElementAt(temp,l);
-                                        }
- 
+                                        } 
                                  }
                               }
- 
-                           saveVector();
-                        }
- 
+                            saveVector();
+                        } 
                       newFrame.setVisible(false);
-                  }
- 
- 
+                  } 
            }
- 
- 
+  
        public void saveVector()
            {
                   t = new Thread(this, "Save Vector Thread");
                   t.start();
  
            }
- 
- 
+  
        public void valueChanged(ListSelectionEvent lse)
            {
- 
- 
            }
  
     }
