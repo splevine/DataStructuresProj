@@ -1,5 +1,8 @@
 package addressbook;
 
+//April 30th, 2017
+//@author/editor: Seth 
+
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -36,15 +39,11 @@ class AddressBook implements ActionListener
                     frame.setLocation(screenWidth/4, screenHeight/4);
                     frame.setIconImage(img);
                     addWidgets();
-                    frame.show();
- 
+                    frame.show(); 
             }
- 
- 
- 
-         public void addWidgets()
- 
-            {
+          
+         public void addWidgets(){
+             
                     menubar.add(menu);
  
                     menu = new JMenu("Options");
@@ -158,7 +157,7 @@ class AddressBook implements ActionListener
                 else  if(ae.getActionCommand() == "About")
                     {
                           JOptionPane.showMessageDialog(frame, "About Address Book: "
-                                  + "Created By Rahul Chouhan"
+                                  + "Based off of template by Rahul Chouhan"
                                   + "Computer Engg, IET-DAVV, Indore. "
                                   + "Website: http "," Address Book", JOptionPane.INFORMATION_MESSAGE); 
                     }
@@ -198,7 +197,7 @@ class AddressBook implements ActionListener
  
                         try
                            {
-                              bfout = new FileOutputStream(filename + "\data.dat");
+                              bfout = new FileOutputStream(filename + "\\data.dat");
                            }
                         catch(Exception e)
                            {
@@ -789,11 +788,8 @@ Runnable
  
                         for(int t=0;t<v.size();t++)
                             {
- 
                                  con = (Contact) v.elementAt(t);
  
- 
-
                                  if(SearchStr.equalsIgnoreCase(con.getFName()) || 
                                          SearchStr.equalsIgnoreCase(con.getLName()) ||
                                          SearchStr.equalsIgnoreCase(con.getFName() + " " + con.getLName()))
@@ -818,59 +814,47 @@ Runnable
                                         if(c<5)
                                              c++;
                                     }
- 
                             }
  
- 
-                         if(flag)
-                            {
+                         if(flag){
                                JOptionPane.showMessageDialog(newFrame, "Contact Found!", 
-                                       "Search Result!", JOptionPane.INFORMATION_MESSAGE);
-                            }
+                                       "Search Result!", JOptionPane.INFORMATION_MESSAGE);                           
+                         }
  
-                         else
-                            {
+                         else{
                                JOptionPane.showMessageDialog(newFrame, "No Such Contact Found!", 
-                                       "Search Result!",JOptionPane.INFORMATION_MESSAGE);
-                            }
+                                       "Search Result!",JOptionPane.INFORMATION_MESSAGE);                            
+                         }
  
  
                    }
-                else if(ae.getActionCommand() == "Sort Contacts")
-                   {
+                else if(ae.getActionCommand() == "Sort Contacts"){
  
-                     if(byfname.isSelected())
-                       {
+                     if(byfname.isSelected()){
                            Contact contact1 = new Contact();
                            Contact contact2 = new Contact();
                            Contact temp = new Contact();
                            int l,m;
  
-                           for(l=0;l<v.size()-1;l++)
-                             {
-                               for(m=l+1;m<v.size();m++)
-                                 {
-                                    contact1 = (Contact) v.elementAt(l);
-                                    contact2 = (Contact) v.elementAt(m);
- 
- 
+                           for(l=0;l<v.size()-1;l++) {
+                               for(m=l+1;m<v.size();m++){                                    
+                                   contact1 = (Contact) v.elementAt(l);                                    
+                                   contact2 = (Contact) v.elementAt(m); 
 
-                                    if(contact1.getFName().compareTo(contact2.getFName()) > 0)
-                                        {
-                                           temp = (Contact) 
+                                    if(contact1.getFName().compareTo(contact2.getFName()) > 0){
+                                           temp = (Contact)
                                                    v.elementAt(m);                                          
 
                                            v.setElementAt(v.elementAt(l),m);
                                            v.setElementAt(temp,l);
-                                        }
+                                     }
  
-                                 }
-                              }
+                                }
+                             }
  
                            saveVector();
                         }
-                      else
-                        {
+                      else{
  
                            Contact contact1 = new Contact();
                            Contact contact2 = new Contact();
