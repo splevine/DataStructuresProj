@@ -3,24 +3,24 @@ package datastructuresproj;
 import java.util.Scanner;
 
 /**
- *
+ * 4/30/2017
  * @author Seth
  */
 public class Restaurant {
     Scanner sc = new Scanner(System.in);
 
-    private String name;
-    private String address;
-    private String foodType;
+    String name;
+    String address;
+    String foodType;
     String manager;
     
     double distance;
-    private int foodWaste;
-    private int MonWaste;
-    private int TuesWaste;
-    private int WedsWaste;
-    private int ThurWaste;
-    private int FriWaste;    
+    int foodWaste;
+    int MonWaste;
+    int TuesWaste;
+    int WedsWaste;
+    int ThurWaste;
+    int FriWaste;    
     int[] waste = new int[5];    
     
     public Restaurant(String name){
@@ -77,8 +77,8 @@ public class Restaurant {
         return printFullInfo;
     }
     
-    public int[] createArray() {
-        int[] waste = new int[5];
+    public int[] createArray(int MonWaste, int TuesWaste, int WedsWaste, int ThurWaste, int FriWaste) {
+        
         waste[0] = MonWaste; 
         waste[1] = TuesWaste; 
         waste[2] = WedsWaste; 
