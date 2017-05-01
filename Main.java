@@ -69,9 +69,18 @@ public class Main {
             }
         }
         
+        //dow = days of week
+        LinkedList<String> dow = new LinkedList<String>();
+        dow.add("Monday");
+        dow.add("Tuesday");
+        dow.add("Wednesday");
+        dow.add("Thursday");
+        dow.add("Friday");        
+
+        
         System.out.println("************************");
         System.out.println(" *** Current Output ***");
-        System.out.println("Day of the week: " + index);  
+        System.out.println("Day of the week: " + dow.get(index));  
         System.out.println("Food Wasted: " + max + " lbs");  
         
         
