@@ -1,9 +1,9 @@
-package datastructuresproj;
+package datastructuresproject;
 
 import java.util.Scanner;
 
 /**
- * 4/30/2017
+ * 5/2/2017
  * @author Seth
  */
 public class Restaurant {
@@ -13,14 +13,15 @@ public class Restaurant {
     String address;
     String foodType;
     String manager;
-    
     double distance;
+    
     int foodWaste;
     int MonWaste;
     int TuesWaste;
     int WedsWaste;
     int ThurWaste;
-    int FriWaste;    
+    int FriWaste; 
+    
     int[] waste = new int[5];    
     
     public Restaurant(String name){
@@ -38,8 +39,8 @@ public class Restaurant {
         this.name = name;
         this.address = address;
         this.foodType = foodType;
-        this.foodWaste = foodWaste;
     }
+    
     public String getName(){
         return name;
     }
@@ -75,6 +76,40 @@ public class Restaurant {
         printFullInfo = "Restaurant: " + name + "\nAddress: " + address 
                 + "\nDistance: " + distance + "\nContact: " + manager +"\n";
         return printFullInfo;
+    }
+    
+    private static void bubbleSort(int[] intArray) {        
+          
+            int n = intArray.length;
+            int temp = 0;
+          
+            for(int i=0; i < n; i++){
+                    for(int j=1; j < (n-i); j++){
+                          
+                            if(intArray[j-1] > intArray[j]){
+                                    //swap the elements!
+                                    temp = intArray[j-1];
+                                    intArray[j-1] = intArray[j];
+                                    intArray[j] = temp;
+                            }
+                          
+                    }
+            }
+  
+    }
+    
+    public String printFoodWasteStats(){
+        String FoodWaste;
+        int tot = 0;
+        for (int i = 0; i < this.waste.length; i++){
+            tot = tot + this.waste[i];
+        }
+        
+        bubbleSort(this.waste);
+        int min = this.waste[0];
+        int max = this.waste[this.waste.length - 1];
+        FoodWaste = ("Weekly Average: " + tot + "\nMinimum Daily Waste: " + min + "\nMaximum Daily Waste: " + max);
+        return FoodWaste;  
     }
     
     public int[] createArray(int MonWaste, int TuesWaste, int WedsWaste, int ThurWaste, int FriWaste) {
