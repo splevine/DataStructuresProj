@@ -71,6 +71,7 @@ public class Restaurant {
         return printInfo;
     }
     
+    //DISPLAY RESTAURANT INFO WITH PROPER SPACING
     public String printFullInfo(){
         String printFullInfo;
         printFullInfo = "Restaurant: " + name + "\nAddress: " + address 
@@ -78,6 +79,7 @@ public class Restaurant {
         return printFullInfo;
     }
     
+    //BUBBLESORT Algorithm, COMPARES AND SWAPS IF APPROPRIATE
     private static void bubbleSort(int[] intArray) {        
           
             int n = intArray.length;
@@ -91,13 +93,12 @@ public class Restaurant {
                                     temp = intArray[j-1];
                                     intArray[j-1] = intArray[j];
                                     intArray[j] = temp;
-                            }
-                          
+                            }                          
                     }
-            }
-  
+            }  
     }
     
+    // USES BUBBLE SORT TO FIND MAX AND MIN DAILY WASTE, ALSO PRINTS AVERAGE WEEKLY WASTE
     public String printFoodWasteStats(){
         String FoodWaste;
         int tot = 0;
@@ -112,8 +113,8 @@ public class Restaurant {
         return FoodWaste;  
     }
     
-    public int[] createArray(int MonWaste, int TuesWaste, int WedsWaste, int ThurWaste, int FriWaste) {
-        
+    // CREATES ARRAY FOR DAILY WASTE
+    public int[] createArray(int MonWaste, int TuesWaste, int WedsWaste, int ThurWaste, int FriWaste) {  
         waste[0] = MonWaste; 
         waste[1] = TuesWaste; 
         waste[2] = WedsWaste; 
@@ -122,6 +123,7 @@ public class Restaurant {
         return waste;
     }
     
+    // USES SCANNER TO INPUT DAILY WASTE, MONDAY TO FRIDAY
     public void inputWaste(){
     System.out.println("Please Enter the amount of food wasted each day at " + this.getName());
         for (int i = 0; i < 5; i++){
@@ -140,9 +142,7 @@ public class Restaurant {
             if (i==4) {
                 System.out.print("Friday Waste: ");
             }                   
-            this.waste[i] = sc.nextInt();
-           
+            this.waste[i] = sc.nextInt();      
         }
     }
-    
 }
