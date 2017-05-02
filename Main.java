@@ -1,4 +1,4 @@
-/* April 30th, 2017
+/* May 2nd, 2017
  * Data Structures Project - Draft 
  * Prof. Nizich
  *
@@ -7,7 +7,7 @@
  * Draft author: Seth
  */
 
-package datastructuresproj;
+package datastructuresproject;
 
 import java.util.*;
 
@@ -18,7 +18,6 @@ public class Main {
     * To do: Find volunteers that can work that day
     */
 
-    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
         
@@ -35,8 +34,6 @@ public class Main {
         R1.createArray(10, 20, 30, 40, 50);
         R2.createArray(50, 30, 40, 20, 10);
         R3.createArray(100, 101, 102, 103, 104);
-        System.out.println(R1.waste[1]);  
-
         
         // Queue
         Queue<String> myQ = new LinkedList<>();
@@ -45,7 +42,7 @@ public class Main {
         myQ.add("Wednesday");
         myQ.add("Thursday");
         myQ.add("Friday");
-        System.out.println("myQ: " + myQ);
+        //System.out.println("myQ: " + myQ);
 
         int sum;
         for (int j = 0; j < 5; j++ ){
@@ -77,20 +74,28 @@ public class Main {
         dow.add("Thursday");
         dow.add("Friday");        
 
-        
         System.out.println("************************");
         System.out.println(" *** Current Output ***");
         System.out.println("Day of the week: " + dow.get(index));  
         System.out.println("Food Wasted: " + max + " lbs");  
+        System.out.println("************************");
+     
+        System.out.println("\n************************");        
+        System.out.println(R1.printFullInfo());
+        System.out.println(R1.printFoodWasteStats());
+        System.out.println("************************");
         
+        System.out.println("\n************************");        
+        System.out.println(R2.printFullInfo());
+        System.out.println(R2.printFoodWasteStats());
+        System.out.println("************************");
         
-        
-        //System.out.println(R1.printFullInfo());
-        //System.out.println(R2.printFullInfo());
-        //System.out.println(R3.printFullInfo());
-        
-
+        System.out.println("\n************************");        
+        System.out.println(R3.printFullInfo());
+        System.out.println(R3.printFoodWasteStats());
+        System.out.println("************************");
         
     }
 }
+
 
