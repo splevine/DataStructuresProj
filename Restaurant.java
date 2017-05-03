@@ -3,7 +3,7 @@ package datastructuresproject;
 import java.util.Scanner;
 
 /**
- * 5/2/2017
+ * 5/3/2017
  * @author Seth
  */
 public class Restaurant {
@@ -14,13 +14,6 @@ public class Restaurant {
     String foodType;
     String manager;
     double distance;
-    
-    int foodWaste;
-    int MonWaste;
-    int TuesWaste;
-    int WedsWaste;
-    int ThurWaste;
-    int FriWaste; 
     
     int[] waste = new int[5];    
     
@@ -35,67 +28,32 @@ public class Restaurant {
         this.manager = manager;
     }
     
-    public Restaurant(String name, String address, String foodType){
-        this.name = name;
-        this.address = address;
-        this.foodType = foodType;
-    }
-    
     public String getName(){
         return name;
     }
     
-    public String getFoodType(){
-        return foodType;
-    }
-    
-    public String getAddress(){
-        return address;
-    }
-    
-    public int getFoodWaste(){
-        return foodWaste;
-    }
-    
-    public String getInfo(){
-        String fullInfo;
-        fullInfo = "Restaurant Name: " + name + ", Address: " + address 
-                + ", Food Type: " + foodType + ", Wasted Food: " + foodWaste + "lbs";
-        return fullInfo;
-    }
-    
+    //DISPLAY RESTAURANT INFO WITH PROPER SPACING
     public String printInfo(){
         String printInfo;
         printInfo = "Restaurant: " + name + "\nAddress: " + address 
-                + "\nFood Type: " + foodType + "\nWasted Food: **" + foodWaste + "** lbs";
+                + "\nDistance: " + distance + " miles" + "\nContact: " + manager +"\n";
         return printInfo;
     }
     
-    //DISPLAY RESTAURANT INFO WITH PROPER SPACING
-    public String printFullInfo(){
-        String printFullInfo;
-        printFullInfo = "Restaurant: " + name + "\nAddress: " + address 
-                + "\nDistance: " + distance + "\nContact: " + manager +"\n";
-        return printFullInfo;
-    }
-    
     //BUBBLESORT Algorithm, COMPARES AND SWAPS IF APPROPRIATE
-    private static void bubbleSort(int[] intArray) {        
-          
-            int n = intArray.length;
-            int temp = 0;
-          
-            for(int i=0; i < n; i++){
-                    for(int j=1; j < (n-i); j++){
-                          
-                            if(intArray[j-1] > intArray[j]){
-                                    //swap the elements!
-                                    temp = intArray[j-1];
-                                    intArray[j-1] = intArray[j];
-                                    intArray[j] = temp;
-                            }                          
-                    }
-            }  
+    private static void bubbleSort(int[] intArray) {
+        int n = intArray.length;
+        int temp = 0;
+        for(int i=0; i < n; i++){
+            for(int j=1; j < (n-i); j++){                          
+                if(intArray[j-1] > intArray[j]){
+                    //swap the elements!
+                    temp = intArray[j-1];
+                    intArray[j-1] = intArray[j];
+                    intArray[j] = temp;
+                }                          
+            }
+        }  
     }
     
     // USES BUBBLE SORT TO FIND MAX AND MIN DAILY WASTE, ALSO PRINTS AVERAGE WEEKLY WASTE
@@ -144,5 +102,13 @@ public class Restaurant {
             }                   
             this.waste[i] = sc.nextInt();      
         }
+    }
+    
+    // uses printInfo() and printFoodWasteStats()
+    public void printFullInfo(){
+        System.out.println("\n************************");        
+        System.out.println(this.printInfo());
+        System.out.println(this.printFoodWasteStats());
+        System.out.println("************************");
     }
 }
