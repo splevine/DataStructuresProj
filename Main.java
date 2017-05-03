@@ -1,4 +1,4 @@
-/* May 2nd, 2017
+/* May 3rd, 2017
  * Data Structures Project - Draft 
  * Prof. Nizich
  *
@@ -15,36 +15,35 @@ public class Main {
     
     /* Enter in the average amount of food wasted at each restaurant for each day of the week
     * Output which day of the week is the best to pick up food
-    * To do: Find volunteers that can work that day
     */
 
     public static void main(String[] args) {
         //Scanner sc = new Scanner(System.in);
-        
         //CONSTRUCTOR for Restaurant(String name, String address, Double distance, String manager){
-
+        
         Restaurant R1 = new Restaurant("Frank's Pizza & Pasta", "2 Whippet Ln, East Norwich, NY 11732", 6.9, "Frank Banks");
         Restaurant R2 = new Restaurant ("The Whole Enchilada", "35 Greenmeadow Ln, Huntington, NY 11743", 5.6, "Gabriel Rayes");
         Restaurant R3 = new Restaurant ("Grand Buffet", "90 Crestwood Blvd, Farmingdale, NY 11735", 8.1, "James Chong");
 
-        //inputWaste() method is in Restaurant class - creates an array of the amount of food wasted each weekday
-        //System.out.println("*******");
-        //System.out.println("Final Product can have input method, for testing waste data is hard coded");
+        //inputWaste() method is in Restaurant class - 
+        //Creates an array of the amount of food wasted each weekday based off user input
+        //For development and demo, waste data is hard coded
         
-        //STACK - used to load data for first restaurant
+        //STACK - LIFO - used to load waste data for first restaurant
         Stack<Integer> myStack = new Stack<>();
-        myStack.add(50);
-        myStack.add(40);
-        myStack.add(30);
-        myStack.add(20);
-        myStack.add(10);
+        myStack.add(150);
+        myStack.add(140);
+        myStack.add(130);
+        myStack.add(120);
+        myStack.add(110);
 
-        // RESTAURANT WASTE FOR EACH DAY PUT INTO ARRAY        
+        // RESTAURANT WASTE FOR EACH DAY PUT INTO ARRAY
+        // createArray method is in Restaurant class       
         R1.createArray(myStack.pop(), myStack.pop(), myStack.pop(), myStack.pop(), myStack.pop());
-        R2.createArray(50, 30, 40, 20, 10);
-        R3.createArray(100, 101, 102, 103, 104);
+        R2.createArray(105, 110, 100, 120, 110);
+        R3.createArray(100, 102, 141, 103, 100);
         
-        // QUEUE
+        // QUEUE - FIFO - Used to print days of week in order
         Queue<String> myQ = new LinkedList<>();
         myQ.add("Monday");
         myQ.add("Tuesday");
@@ -56,28 +55,34 @@ public class Main {
         // PRINT OUT INPUT DAY BY DAY - CALCULATE TOTAL DAILY WASTE
         int sum;
         for (int j = 0; j < 5; j++ ){
+            // Print day of week
             System.out.println("** " + myQ.poll() + " **");
+            // Print daily waste for each restaurant
             System.out.println(R1.getName() + ": " + R1.waste[j] + " lbs" );
             System.out.println(R2.getName() + ": " + R2.waste[j] + " lbs" );
             System.out.println(R3.getName() + ": " + R3.waste[j] + " lbs" );
+            // Calculate total waste and print
             sum = R1.waste[j] + R2.waste[j] + R3.waste[j];
             System.out.println("Daily Waste: " + sum + "\n");      
         }
         
         //FIND DAY WITH MOST WASTE
+        //STARTS WITH MONDAY (INDEX = 0)
         int max = R1.waste[0] + R2.waste[0] + R3.waste[0];
         int val;
-        int index = 0;
+        int index = 0; 
+        // CYCLES THROUGH WEEKDAYS
         for (int i=0; i <5; i++) {
             val = R1.waste[i] + R2.waste[i] + R3.waste[i];
             if (val > max) {
+                //SAVES BOTH DAY OF WEEK (INDEX) AND VALUE
                 index = i;
                 max = val;
             }
         }
         
         //LINKED LIST - DAYS OF WEEK - USED TO IDENTIFY DAY INDEX
-        LinkedList<String> dow = new LinkedList<String>();
+        LinkedList<String> dow = new LinkedList<>();
         dow.add("Monday");
         dow.add("Tuesday");
         dow.add("Wednesday");
@@ -94,20 +99,10 @@ public class Main {
      
         //OUTPUT - FULL INFO ON EACH RESTAURANT
         //OUTPUT - FOOD WASTE STATS - USES BUBBLE SORT TO FIND MAX AND MIN
-        System.out.println("\n************************");        
-        System.out.println(R1.printFullInfo());
-        System.out.println(R1.printFoodWasteStats());
-        System.out.println("************************");
-        
-        System.out.println("\n************************");        
-        System.out.println(R2.printFullInfo());
-        System.out.println(R2.printFoodWasteStats());
-        System.out.println("************************");
-        
-        System.out.println("\n************************");        
-        System.out.println(R3.printFullInfo());
-        System.out.println(R3.printFoodWasteStats());
-        System.out.println("************************");
+        //printFullInfo is method in Restaurants Class
+        R1.printFullInfo();
+        R2.printFullInfo();
+        R3.printFullInfo();     
         
     }
 }
