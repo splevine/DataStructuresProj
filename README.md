@@ -19,11 +19,9 @@ Project Deliverables:
 6. Project must use a Linked List in one of its classes
 7. Project must use a Stack in one of its classes
 8. Project must use a Queue in one of its classes
-9. Project must use a Binary Tree in one of its classes
-10. Project use a Binary Search in one of its classes
-11. Project must use a Bubble Sort in one of its classes
-12. Requirements Document
-13. Project Summary
-14. References
+9. Project must use a Bubble Sort in one of its classes
+10. Requirements Document
+11. Project Summary
+12. References
 
 *** Submissions are to be typed, formatted, bound and submitted on time please! ***
